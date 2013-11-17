@@ -1,5 +1,5 @@
-README.txt
-----------
+README.md
+---------
 
 This is an example module for the blog post, Adding and Controlling TinyMCE
 Fonts in Drupal (http://www.group42.ca/adding_and_controlling_tinymce_fonts_in_drupal).

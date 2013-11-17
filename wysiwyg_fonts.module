@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Example of using hook_wysiwyg_editor_settings_alter() to add a font to TinyMCE's font selector.
+ *
+ * The following example code adds a font named "Architects Daughter" to TinyMCE's
+ * font selector. The "Font" button must be enabled in the Wysiwysg editor
+ * profile in order to see the font selector.
+ *
+ * The other fonts listed are the fonts included with TinyMCE.
+ * $settings['theme_advanced_fonts'] is not prepopulated with these fonts, so
+ * they were added manually.
+ */
+
+/**
+ * Implements hook_wysiwyg_editor_settings_alter().
+ */
+function wysiwyg_fonts_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if ($context['profile']->editor == 'tinymce') {
+    $font_styles = array(
+      "Andale Mono=andale mono,times",
+      "Architects Daughter=architects_daughterregular",
+      "Arial=arial,helvetica,sans-serif",
+      "Arial Black=arial black,avant garde",
+      "Book Antiqua=book antiqua,palatino",
+      "Comic Sans MS=comic sans ms,sans-serif",
+      "Courier New=courier new,courier",
+      "Georgia=georgia,palatino",
+      "Helvetica=helvetica",
+      "Impact=impact,chicago",
+      "Symbol=symbol",
+      "Tahoma=tahoma,arial,helvetica,sans-serif",
+      "Terminal=terminal,monaco",
+      "Times New Roman=times new roman,times",
+      "Trebuchet MS=trebuchet ms,geneva",
+      "Verdana=verdana,geneva",
+      "Webdings=webdings",
+      "Wingdings=wingdings,zapf dingbats",
+    );
+    $settings['theme_advanced_fonts'] = implode(';', $font_styles);
+    $settings['content_css'] .= ',' . drupal_get_path('module', 'wysiwyg_fonts') . '/wysiwyg_fonts.css';
+  }
+}

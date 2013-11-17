@@ -1,0 +1,6 @@
+name = WYSIWYG Fonts
+description = Provides additional fonts for TinyMCE
+core = 7.x
+package = User interface
+dependencies[] = wysiwyg
+stylesheets[all][] = wysiwyg_fonts.css
